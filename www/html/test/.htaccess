@@ -1,0 +1,54 @@
+# php config
+php_flag register_globals Off
+php_flag magic_quotes_gpc off
+php_value date.timezone Asia/Tokyo
+php_flag output_buffering off
+
+php_value error_reporting 32767
+php_flag display_errors On
+php_flag display_startup_errors Off
+php_flag log_errors On
+
+php_value mbstring.language Japanese
+php_value mbstring.internal_encoding UTF-8
+php_value mbstring.http_output pass
+php_value mbstring.http_input pass
+php_flag mbstring.encoding_translation off
+php_value mbstring.detect_order UTF-8,SJIS,EUC-JP,JIS,ASCII
+php_value mbstring.substitute_character none
+
+php_flag session.use_trans_sid Off
+php_flag session.use_cookies On
+php_flag session.use_only_cookies On
+php_flag session.cookie_httponly On
+php_value session.cookie_lifetime 0
+#php_flag session.cookie_secure On
+php_flag session.auto_start Off
+php_value session.cache_limiter none
+php_value session.gc_divisor 1000
+php_value session.gc_maxlifetime 10800
+php_value session.gc_probability 1
+
+php_value max_execution_time 1800
+php_value memory_limit 512M
+php_value post_max_size 210M
+php_value upload_max_filesize 210M
+php_value max_file_uploads 20
+php_value max_input_vars 1000
+
+# set in php file
+# php_value error_log "/path/to/error.log"
+
+# app config
+# production development local maintenance
+SetEnv APP_ENV local
+
+# auth
+#AuthType Basic
+#Require valid-user
+#AuthName "Please enter your ID and password"
+#AuthUserFile /var/www/html/site/.htpasswd
+
+<FilesMatch "^(tmp_uploads)">
+deny from all
+</FilesMatch>
